@@ -1,0 +1,4 @@
+<launch>
+    <remap from="topic1" to="topic2" />
+    <node name="cvssp_amcl" pkg="cvssp_amcl" type="remap.py" />
+</launch>

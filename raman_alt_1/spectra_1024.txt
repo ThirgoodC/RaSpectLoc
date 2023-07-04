@@ -1,0 +1,8 @@
+/home/ct00659/Downloads/raman_alt_1/spec_0_inter_1024.csv
+/home/ct00659/Downloads/raman_alt_1/spec_5_inter_1024.csv
+/home/ct00659/Downloads/raman_alt_1/spec_1_inter_1024.csv
+/home/ct00659/Downloads/raman_alt_1/spec_2_inter_1024.csv
+/home/ct00659/Downloads/raman_alt_1/spec_3_inter_1024.csv
+/home/ct00659/Downloads/raman_alt_1/spec_4_inter_1024.csv
+/home/ct00659/Downloads/raman_alt_1/spec_6_inter_1024.csv
+/home/ct00659/Downloads/raman_alt_1/spec_7_inter_1024.csv

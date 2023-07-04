@@ -1,0 +1,13 @@
+<launch>
+	<arg name="robot_name" />
+	
+	<group ns="$(arg robot_name)">
+		<node name="openpose_ros_node" pkg="cvssp_openpose" type="openpose_ros_node" output="screen" args="--model_folder /home/om0007/ros/openpose_ws/src/cvssp_openpose/models --render_pose 0">
+			<remap from="rgb_image" to="camera/rgb/image_color" />
+			<remap from="depth_image" to="camera/depth_registered/image_raw" />
+			<remap from="cam_info" to="camera/depth_registered/camera_info" />
+			<param name="use_kinect" value="true"/> 
+		</node>
+		<node name="pointcloud_to_udp" pkg="cvssp_tools" type="pointcloud_to_udp.py" output="screen"/>
+	</group>
+</launch>

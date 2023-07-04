@@ -1,0 +1,4 @@
+# Get the map as a nav_msgs/OccupancyGrid
+---
+cvssp_tools/SemanticOccupancyGrid map
+#nav_msgs/OccupancyGrid map

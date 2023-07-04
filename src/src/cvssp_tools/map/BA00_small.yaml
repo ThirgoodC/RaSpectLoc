@@ -1,0 +1,6 @@
+image: ./BA00.png
+resolution: 0.0052250
+origin: [0.0000000,0.0000000, 0.0000000]
+negate: 0
+occupied_thresh: 0.45
+free_thresh: 0.196

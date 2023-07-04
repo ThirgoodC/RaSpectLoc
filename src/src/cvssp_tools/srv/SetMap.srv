@@ -1,0 +1,6 @@
+# Set a new map together with an initial pose
+cvssp_tools/SemanticOccupancyGrid map
+#nav_msgs/OccupancyGrid map
+geometry_msgs/PoseWithCovarianceStamped initial_pose
+---
+bool success
