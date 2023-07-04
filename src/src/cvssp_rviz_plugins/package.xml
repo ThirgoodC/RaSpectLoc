@@ -1,0 +1,29 @@
+<package>
+  <name>cvssp_rviz_plugins</name>
+  <version>1.0.0</version>
+  <description>
+     Oscar's Visualisation Tools.
+  </description>
+  <maintainer email="c.thirgood@surrey.ac.uk">Chris Thirgood</maintainer>
+  <license>BSD</license>
+
+  <url>http://www.oscarmendez.co.uk</url>
+  <author>Oscar Mendez</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>qtbase5-dev</build_depend>
+  <build_depend>rviz</build_depend>
+  <build_depend>pcl_ros</build_depend>
+
+  <run_depend>libqt5-core</run_depend>
+  <run_depend>libqt5-gui</run_depend>
+  <run_depend>libqt5-widgets</run_depend>
+  <run_depend>rviz</run_depend>
+  <run_depend>pcl_ros</run_depend>
+
+  <export>
+      <rosdoc config="${prefix}/rosdoc.yaml"/>
+      <rviz plugin="${prefix}/plugin_description.xml"/>
+  </export>
+</package>

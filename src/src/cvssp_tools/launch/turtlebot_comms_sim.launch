@@ -1,0 +1,58 @@
+<launch>
+	<arg name="robot_name" />
+	<arg name="save_path" />
+	
+	<!-- Some Transform Stuff for Turtlebots
+	<node name="map_to_$(arg robot_name)_tf" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 map $(arg robot_name)/map 100" />-->
+
+	<group ns="$(arg robot_name)">
+		<node name="KinectSaver" pkg="cvssp_tools" type="KinectSaver">
+			<remap from="rgb_image" to="camera/rgb/resized/image_raw" />
+			<remap from="depth_image" to="camera/depth/resized/image_16" />
+			<remap from="cam_info" to="camera/depth/resized/camera_info" />
+			<param name="image_transport" value="raw" />
+			<param name="map_frame" value="/world" />
+			<param name="cam_frame" value="/$(arg robot_name)/base_footprint" />
+			<param name="path" value="$(arg save_path)" />
+			<param name="filename_format" value="_$(arg robot_name).png" />
+			<param name="color_encoding" value="bgr8" />
+			<param name="depth_encoding" value="16UC1" />
+			<param name="pose_filename" value="pose_$(arg robot_name).txt" />
+			<param name="pad" value="true" />
+			<param name="repack_depth" value="true" />
+			<param name="save_rpy" value="true" />
+			<param name="live" value="true" />
+			<param name="resize_image" value="false" />
+		</node>
+		<node name="tf_to_udp" pkg="cvssp_tools" type="tf_to_udp.py"/>
+
+		<node pkg="nodelet" type="nodelet" name="$(arg robot_name)_camera_nodelet_manager"  args="manager"/>
+		<node pkg="nodelet" type="nodelet" name="color_resize"
+        		args="load image_proc/resize $(arg robot_name)_camera_nodelet_manager">
+			<remap from="image"   	 	 to="camera/rgb/image_raw" />
+			<remap from="camera_info"   	  to="camera/rgb/camera_info" />
+			<remap from="color_resize/image"   	 to="camera/rgb/resized/image_raw" />
+			<remap from="color_resize/camera_info" to="camera/rgb/resized/camera_info" />
+			<param name="scale_height"	value="0.5"/>
+			<param name="scale_width"	value="0.5"/>
+			<param name="interpolation"	value="1"/>
+  		</node>
+
+		<node pkg="nodelet" type="nodelet" name="depth_resize"
+        		args="load image_proc/resize $(arg robot_name)_camera_nodelet_manager">
+			<remap from="image"   	 	 to="camera/depth/image_raw" />
+			<remap from="camera_info"   	  to="camera/depth/camera_info" />
+			<remap from="depth_resize/image"   	 to="camera/depth/resized/image_raw" />
+			<remap from="depth_resize/camera_info" to="camera/depth/resized/camera_info" />
+			<param name="scale_height"	value="0.5"/>
+			<param name="scale_width"	value="0.5"/>
+			<param name="interpolation"	value="0"/>
+  		</node>
+
+		<node pkg="nodelet" type="nodelet" name="depth_convert"
+        		args="load depth_image_proc/convert_metric $(arg robot_name)_camera_nodelet_manager">
+			<remap from="image_raw"   to="camera/depth/resized/image_raw" />
+			<remap from="image"   	  to="camera/depth/resized/image_16" />
+  		</node>
+	</group>
+</launch>

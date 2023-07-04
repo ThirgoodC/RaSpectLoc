@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <arg name="file"        default="$(find cvssp_tools)/map/BA00_6_2.yaml" />
+     <!-- MAP SERVER -->
+    <node name="map_server" pkg="cvssp_tools" type="map_server" args="$(arg file)" output="screen">
+        <remap from="map" to="loc_map"/>
+        <param name="frame_id" value="map"/>
+    </node>
+
+     <!-- AMCL -->
+     <!-- <node pkg="amcl" type="amcl" name="amcl" machine="$(arg machine)" output="log">
+         <remap from="scan" to="$(arg laser)/scan" />
+         <remap from="map" to="loc_map" />
+         <remap from="/diagnostics" to="diagnostics" />
+
+         <param name="initial_pose_x" value="$(arg robot_init_x)"/>
+         <param name="initial_pose_y" value="$(arg robot_init_y)"/>
+         <param name="initial_pose_a" value="$(arg robot_init_phi)"/>
+
+        <rosparam command="load" file="$(env ROBOT_BRINGUP_PATH)/parameters/localization/amcl.yaml" />
+     </node> -->
+
+</launch>

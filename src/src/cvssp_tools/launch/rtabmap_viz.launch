@@ -1,0 +1,17 @@
+<launch>
+  <node pkg="rviz" type="rviz" name="rviz" args="--disable-anti-aliasing --no-stereo -d /home/footstool/.rviz/TurtleBot_RTab.rviz"/>
+
+  <!-- Construct and voxelize the point cloud (for fast visualization in rviz) -->
+  <node pkg="nodelet" type="nodelet" name="points_xyzrgb" args="standalone rtabmap_ros/point_cloud_xyzrgb">
+    <remap from="/camera/rgb/image_color"       to="/camera/data_throttled_image"/>
+    <remap from="/camera/depth/image"     		to="/camera/data_throttled_image_depth"/>
+    <remap from="/camera/rgb/camera_info" 		to="/camera/data_throttled_camera_info"/>
+    <remap from="/rtabmap/cloud_map"           	to="/rtabmap/voxel_cloud" />
+
+    <param name="rgb/image_transport" type="string" value="theora"/>
+    <param name="depth/image_transport" type="string" value="compressedDepth"/>
+
+    <param name="queue_size" type="int" value="10"/>
+    <param name="voxel_size" type="double" value="0.01"/>
+  </node>
+</launch>
