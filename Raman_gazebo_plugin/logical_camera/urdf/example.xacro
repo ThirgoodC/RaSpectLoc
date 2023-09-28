@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="sensor_frames">
+
+  <!-- Import all sensors from sensors sub-folder -->
+  <xacro:include filename="$(find logical_camera)/urdf/sensors/sensor_logical_camera.xacro" />
+
+  <xacro:log_cam log_cam_name="log_cam_front" 
+          log_cam_px="0.5025" 
+          log_cam_py="0.0" 
+          log_cam_pz="0.66" 
+          log_cam_or="0" 
+          log_cam_op="0" 
+          log_cam_oy="0.0"/>
+
+</robot>
+
