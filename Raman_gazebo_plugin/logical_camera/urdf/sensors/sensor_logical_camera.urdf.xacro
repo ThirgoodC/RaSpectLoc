@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<robot name="log_cam" xmlns:xacro="http://ros.org/wiki/xacro">
+    <gazebo reference="log_cam_front">
+      <sensor name="logical_camera" type="logical_camera">
+        <plugin name="logical_camera_plugin" filename="liblogical_camera.so"/>
+          <!--topicName>TODO</topicName-->
+          <logical_camera>
+            <near>0.55</near>
+            <far>2.5</far>
+            <horizontal_fov>${1.0*3.1415/180.0}</horizontal_fov>
+            <aspect_ratio>1.0</aspect_ratio>
+          </logical_camera>
+
+          <visualize>true</visualize>
+          <always_on>true</always_on>
+          <update_rate>10</update_rate>
+      </sensor>  
+    </gazebo>
+</robot>
+
+<!-- <sensor name="logical_camera" type="logical_camera">
+          <logical_camera>
+            <near>0.55</near>
+            <far>2.5</far>
+            <horizontal_fov>1.05</horizontal_fov>
+            <aspect_ratio>1.8</aspect_ratio>
+          </logical_camera>
+
+          <visualize>true</visualize>
+          <always_on>true</always_on>
+          <update_rate>10</update_rate>
+        </sensor> -->

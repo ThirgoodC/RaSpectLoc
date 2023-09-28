@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="office_corner_desk">
+    <static>True</static>
+
+    <link name="office_desk_corner">
+      <gravity>false</gravity>
+       <visual name="visual1">
+          <geometry>
+            <mesh><uri>model://rs_gazebo/meshes/ss_hq4/office_corner_desk/model.dae</uri></mesh>
+            <!-->Model taken from https://3dwarehouse.sketchup.com/model/3ed500a12dfa511ba6040757a0125a99/Corner-Desk <\!-->
+          </geometry>
+        </visual>
+        <collision name="collision1">
+          <geometry>
+            <mesh><uri>model://rs_gazebo/meshes/ss_hq4/office_corner_desk/model.dae</uri></mesh>
+            <!--><box><size>1.0 1.0 1.0</size></box> <\!-->
+          </geometry>
+        </collision>
+    </link>
+
+  </model>
+</sdf>

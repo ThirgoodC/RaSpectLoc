@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="baxter">
+    <static>True</static>
+
+    <link name="work_bench">
+      <gravity>false</gravity>
+       <visual name="visual1">
+          <geometry>
+            <mesh><uri>model://rs_gazebo/meshes/ss_hq4/work_bench/model.dae</uri></mesh>
+            <!-->Model taken from https://3dwarehouse.sketchup.com/model/ebcfe2e2-bb4b-4cb8-a0ff-bbe7933eb91b/Baxter-Robot <\!-->
+          </geometry>
+        </visual>
+        <collision name="collision1">
+          <geometry>
+            <mesh><uri>model://rs_gazebo/meshes/ss_hq4/work_bench/model.dae</uri></mesh>
+            <!--><box><size>1.0 1.0 1.0</size></box> <\!-->
+          </geometry>
+        </collision>
+    </link>
+
+  </model>
+</sdf>

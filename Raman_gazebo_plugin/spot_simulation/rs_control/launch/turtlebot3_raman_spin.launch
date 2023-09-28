@@ -1,0 +1,9 @@
+<launch>
+  <arg name="robot_name" default="turtlebot1" />
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find rs_control)/config/turtlebot3_raman.yaml" command="load"/>
+  <!-- Load the controllers ns="/$(arg robot_name)"-->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen"  args="base_to_laser_joint_position_controller
+                                                 joint_states_controller"/>
+</launch>
